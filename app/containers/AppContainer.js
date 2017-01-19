@@ -24,12 +24,16 @@ class AppContainer extends Component {
 
   }
 
+  addRecipe() {
+    this.props.addRecipe();
+  }
+
   render() {
     return <View>
     <Text style= {{marginTop: 20}}>
     container, count : {this.state.recipeCount}
     </Text>
-    <TouchableHighlight onPress= {() => {this.incrementRecipeCount()}}>
+    <TouchableHighlight onPress= {() => {this.addRecipe()}}>
     <Text>Add</Text>
     </TouchableHighlight>
     </View>
@@ -43,4 +47,5 @@ function mapDispatchToProps(dispatch) {
   return bindActionCreators(ActionCreators, dispatch);
 }
 
-export default connect(() => {return {}}, mapDispatchToProps)(AppContainer)
+// This pulls in the 'addRecipe' functions
+export default connect(() => {return {}}, mapDispatchToProps)(AppContainer);
