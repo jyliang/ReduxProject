@@ -1,15 +1,9 @@
 import React, {Component } from 'react'
-import ReactNative from 'react-native'
 // trigger components down the line, take in the state and the acciton and will components we give
 import {connect} from 'react-redux'
 import {ActionCreators} from '../actions'
 import {bindActionCreators} from 'redux'
-
-const {
-  View,
-  Text,
-  TouchableHighlight,
-} = ReactNative
+import Home from './Home'
 
 class AppContainer extends Component {
   addRecipe() {
@@ -17,14 +11,7 @@ class AppContainer extends Component {
   }
 
   render() {
-    return <View>
-    <Text style= {{marginTop: 20}}>
-    container, count : {this.props.recipeCount}
-    </Text>
-    <TouchableHighlight onPress= {() => {this.addRecipe()}}>
-    <Text>Add</Text>
-    </TouchableHighlight>
-    </View>
+    return <Home {...this.props} />
 
   }
 
@@ -37,7 +24,5 @@ function mapDispatchToProps(dispatch) {
 
 // This pulls in the 'addRecipe' functions
 export default connect((state) => {
-  return {
-    recipeCount : state.recipeCount
-  }
+  return {}
 }, mapDispatchToProps)(AppContainer);
